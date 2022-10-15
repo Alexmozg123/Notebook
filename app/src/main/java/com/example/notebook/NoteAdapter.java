@@ -13,7 +13,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NumberNoteHold
 
     private static int viewHolderCount;
     private int numberItems;
-
     public NoteAdapter(int numberOfItems) {
         numberItems = numberOfItems;
         viewHolderCount = 0;
@@ -39,7 +38,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NumberNoteHold
 
     @Override
     public void onBindViewHolder(@NonNull NumberNoteHolder holder, int position) {
-
+        holder.bind(position);
     }
 
     @Override
