@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NumberNoteHolder>{
 
     private static int viewHolderCount;
-    private int numberItems;
+    private final int numberItems;
+
     public NoteAdapter(int numberOfItems) {
         numberItems = numberOfItems;
         viewHolderCount = 0;
@@ -25,11 +26,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NumberNoteHold
         int layoutIdForListItem = R.layout.note_list_item;
 
         LayoutInflater inflater = LayoutInflater.from(context);
-
         View view = inflater.inflate(layoutIdForListItem, parent, false);
 
         NumberNoteHolder noteHolder = new NumberNoteHolder(view);
-        noteHolder.listItemsNumberView.setText("View holder index: " + viewHolderCount);
+        noteHolder.viewHolderIndex.setText("ViewHolderIndex: " + viewHolderCount);
 
         viewHolderCount++;
 
@@ -46,18 +46,20 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NumberNoteHold
         return numberItems;
     }
 
-    class NumberNoteHolder extends RecyclerView.ViewHolder {
+    static class NumberNoteHolder extends RecyclerView.ViewHolder {
 
         TextView listItemsNumberView;
+        TextView viewHolderIndex;
 
         public NumberNoteHolder(@NonNull View itemView) {
             super(itemView);
 
             listItemsNumberView = itemView.findViewById(R.id.tv_note_list_item);
+            viewHolderIndex = itemView.findViewById(R.id.tv_view_holder_number);
         }
 
-        void bind(int listItem) {
-            listItemsNumberView.setText(String.valueOf(listItem));
+        void bind(int listIndex) {
+            listItemsNumberView.setText(String.valueOf(listIndex));
         }
     }
 }
