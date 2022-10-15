@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setHasFixedSize(true);
 
-        noteAdapter = new NoteAdapter(1000);
+        noteAdapter = new NoteAdapter(1000, this);
         recyclerView.setAdapter(noteAdapter);
     }
 }
